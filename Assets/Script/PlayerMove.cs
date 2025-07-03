@@ -95,7 +95,7 @@ public class PlayerMove : MonoBehaviour
     {
         float verticalVelocity = rb.velocity.y;
         animator.SetBool("Jump", verticalVelocity > 0.1f);
-        animator.SetBool("Foll", verticalVelocity < -0.1f);
+        animator.SetBool("Fall", verticalVelocity < -0.1f);
         
     }
     private void Anim()

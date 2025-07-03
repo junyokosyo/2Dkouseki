@@ -7,8 +7,8 @@ public class Attack : MonoBehaviour
     [SerializeField] float attackRange = 1.5f;
     [SerializeField] int attackDamage = 2;
     [SerializeField] LayerMask enemyLayer;
-    private float cooldown = 2f;
-    float count = 2;
+    private float cooldown = 3f;
+    float count = 5;
     Animator animator;
     public Transform attackPoint;
     // Start is called before the first frame update
@@ -22,13 +22,10 @@ public class Attack : MonoBehaviour
         count += Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
-
-
-            
             if (count > cooldown)
             {
                 count = 0;
-                attack();
+                animator.SetTrigger("Attack");
             }
 
         }
@@ -44,7 +41,7 @@ public class Attack : MonoBehaviour
             
             
         }
-        animator.SetTrigger("Attack");
+        
     }
     private void OnDrawGizmosSelected()
     {
