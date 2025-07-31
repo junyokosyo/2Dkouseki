@@ -6,8 +6,12 @@ using UnityEngine;
 public class Enem : MonoBehaviour
 {
     [SerializeField] int health = 0;
+    int layer = 7;
     Animator animator;
     BoxCollider2D BoxCollider2D;
+    [SerializeField]
+    private string _layerName;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -25,6 +29,7 @@ public class Enem : MonoBehaviour
     void Dieanim()
     {
         animator.SetTrigger("Dead");
+        gameObject.layer = LayerMask.NameToLayer("enemydead");
     }
    void Fall()
     {
@@ -32,6 +37,7 @@ public class Enem : MonoBehaviour
     }
     void Die()
     {
-        Destroy(gameObject);
+        GameObject.Destroy(gameObject);
+        
     }
 }

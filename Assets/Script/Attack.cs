@@ -38,8 +38,6 @@ public class Attack : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enem>().TakeDamage(attackDamage);
-            
-            
         }
         
     }
@@ -47,8 +45,6 @@ public class Attack : MonoBehaviour
     {
         if (attackPoint == null)
             return;
-
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }

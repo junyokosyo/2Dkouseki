@@ -103,7 +103,7 @@ public class PlayerMove : MonoBehaviour
         animator.SetBool("move", moveHorizontal != 0.0f);
 
     }
-    // UnityのSceneに、デバッグ用の円を描画する
+    // UnityのSceneに、デバッグ用の円を描画するcccccccccc
     private void OnDrawGizmosSelected()
     {
         if (groundCheck == null) return;
