@@ -28,7 +28,7 @@ public class Enem : MonoBehaviour
     }
     void Dieanim()
     {
-        animator.SetTrigger("Dead");
+        animator.SetTrigger("Dead"); 
         gameObject.layer = LayerMask.NameToLayer("enemydead");
     }
    void Fall()

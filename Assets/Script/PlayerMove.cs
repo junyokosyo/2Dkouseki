@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEditor.Tilemaps;
@@ -7,17 +7,17 @@ using UnityEngine.XR;
 
 public class PlayerMove : MonoBehaviour
 {
-    [Header("ˆÚ“®ˆ—")]
+    [Header("ç§»å‹•å‡¦ç†")]
     [SerializeField] float speed = 5f;
 
-    [Header("ƒWƒƒƒ“ƒv")]
+    [Header("ã‚¸ãƒ£ãƒ³ãƒ—")]
     [SerializeField] float _jumpPawer = 0.1f;
     [SerializeField] float groundCheckRadius = 0.2f;
-    [SerializeField] private Transform groundCheck; // Ú’n”»’è‚ÌˆÊ’u
-    [SerializeField] private LayerMask groundLayer; // u’n–Êv‚Æ‚İ‚È‚·ƒŒƒCƒ„[
+    [SerializeField] private Transform groundCheck; // æ¥åœ°åˆ¤å®šã®ä½ç½®
+    [SerializeField] private LayerMask groundLayer; // ã€Œåœ°é¢ã€ã¨ã¿ãªã™ãƒ¬ã‚¤ãƒ¤ãƒ¼
 
 
-    //ƒvƒ‰ƒCƒx[ƒgŠÖ”
+    //ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆé–¢æ•°
     Rigidbody2D rb;
     float moveHorizontal;
     private bool isGrounded;
@@ -40,17 +40,16 @@ public class PlayerMove : MonoBehaviour
         Move();
         Jump();
         Jumpanim();
-        
-
+        Dash();
     }
     private void FixedUpdate()
     {
-        // groundCheck‚ÌˆÊ’u‚ÉAw’è‚µ‚½”¼Œa‚Ì‰~‚ğì‚èA‚»‚Ì‰~‚ªgroundLayer‚ÉG‚ê‚Ä‚¢‚é‚©”»’è
+        // groundCheckã®ä½ç½®ã«ã€æŒ‡å®šã—ãŸåŠå¾„ã®å††ã‚’ä½œã‚Šã€ãã®å††ãŒgroundLayerã«è§¦ã‚Œã¦ã„ã‚‹ã‹åˆ¤å®š
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
 
-        // --- ƒLƒƒƒ‰ƒNƒ^[‚ÌŒü‚«‚ğ”½“] ---
-        // “ü—Í•ûŒü‚ÆŒ»İ‚ÌŒü‚«‚ªˆá‚¤ê‡‚ÉFlip()‚ğŒÄ‚Ño‚·
+        // --- ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®å‘ãã‚’åè»¢ ---
+        // å…¥åŠ›æ–¹å‘ã¨ç¾åœ¨ã®å‘ããŒé•ã†å ´åˆã«Flip()ã‚’å‘¼ã³å‡ºã™
 
     }
 
@@ -91,6 +90,13 @@ public class PlayerMove : MonoBehaviour
         
 
     }
+    private void Dash()
+    {
+        if (Input.GetButtonDown("Fire3"))
+        {
+            Debug.Log("ãƒ€ãƒƒã‚·ãƒ¥é–‹å§‹");
+        }
+    }
     private void Jumpanim()
     {
         float verticalVelocity = rb.velocity.y;
@@ -103,7 +109,6 @@ public class PlayerMove : MonoBehaviour
         animator.SetBool("move", moveHorizontal != 0.0f);
 
     }
-    // Unity‚ÌScene‚ÉAƒfƒoƒbƒO—p‚Ì‰~‚ğ•`‰æ‚·‚écccccccccc
     private void OnDrawGizmosSelected()
     {
         if (groundCheck == null) return;
